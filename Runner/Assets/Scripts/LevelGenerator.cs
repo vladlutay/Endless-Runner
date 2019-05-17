@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 currentPos;
     private GameObject currentPrefab;
     private float currentAngleZ = 0;
-    private float oldAngleZ = 0;
+    private float oldAngleZ = 0;//
     private Direction currentDir = Direction.STRAIGHT;
 
     private void Start()
