@@ -22,7 +22,7 @@ public class LevelGenerator : MonoBehaviour
     private float oldAngleZ = 0;
     private Direction currentDir = Direction.STRAIGHT;
 
-    private void Start()
+    private void Start()//
     {
         currentPos = startPos.position;
         currentPrefab = roads[startPrefabIndex];
