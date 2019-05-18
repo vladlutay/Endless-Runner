@@ -1,7 +1,5 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
-
 
 enum Direction { LEFT, STRAIGHT, RIGHT }
 
@@ -11,6 +9,7 @@ public class LevelGenerator : MonoBehaviour
     private const int maxDir = 3;
     private const int roadNum = 3;
     private const int startPrefabIndex = 1;
+    private const int angleOffset = 90;
 
     public GameObject[] roads = new GameObject[roadNum];
     public Transform startPos;
@@ -19,8 +18,14 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 currentPos;
     private GameObject currentPrefab;
     private float currentAngleZ = 0;
-    private float oldAngleZ = 0;//
-    private Direction currentDir = Direction.STRAIGHT;
+    private float oldAngleZ = 0;
+    private Queue<GameObject> dataRoads = new Queue<GameObject>();
+
+    private void Awake()
+    {
+        for (int i = 0; i < roadNum; i++)
+            roads[i].transform.rotation = Quaternion.identity;
+    }
 
     private void Start()
     {
@@ -36,10 +41,11 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    void CreatePlatform()
+    private void CreatePlatform()
     {
         newstraightRoad = Instantiate(currentPrefab, currentPos, currentPrefab.transform.rotation);
         newstraightRoad.transform.SetParent(startPos);
+        dataRoads.Enqueue(newstraightRoad);
         // Set the next position
         int way = new System.Random().Next(minDir, maxDir);
         currentPos = newstraightRoad.transform.GetChild(way).position;
@@ -59,11 +65,11 @@ public class LevelGenerator : MonoBehaviour
         switch (_dir)
         {
             case Direction.LEFT:
-                    currentAngleZ += 90;
+                    currentAngleZ += angleOffset;
                 break;
 
             case Direction.RIGHT:
-                    currentAngleZ -= 90;
+                    currentAngleZ -= angleOffset;
                 break;
         }
     }
