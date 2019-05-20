@@ -14,6 +14,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] roads = new GameObject[roadNum];
     public Transform startPos;
 
+
     private GameObject newstraightRoad;
     private Vector3 currentPos;
     private GameObject currentPrefab;
@@ -23,6 +24,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void Awake()
     {
+
         for (int i = 0; i < roadNum; i++)
             roads[i].transform.rotation = Quaternion.identity;
     }
@@ -41,7 +43,7 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void CreatePlatform()
+    public void CreatePlatform()
     {
         newstraightRoad = Instantiate(currentPrefab, currentPos, currentPrefab.transform.rotation);
         newstraightRoad.transform.SetParent(startPos);
