@@ -10,6 +10,7 @@ public class SwipeController : MonoBehaviour, IDragHandler, IBeginDragHandler
     private const int swipeRange = 0;
     private const float swipeDistance = 300f;
     public UnityEngine.UI.Text button;
+
     public bool IsSwipe
     {
         get
@@ -60,6 +61,7 @@ public class SwipeController : MonoBehaviour, IDragHandler, IBeginDragHandler
             isSwipe = true;
         }
     }
+
     void IDragHandler.OnDrag(PointerEventData eventData) { }
 
 }

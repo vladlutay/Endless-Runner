@@ -9,11 +9,10 @@ public class LevelGenerator : MonoBehaviour
     private const int maxDir = 3;
     private const int roadNum = 3;
     private const int startPrefabIndex = 1;
-    private const int angleOffset = 90;
+    private const int angleOffset = 90; 
 
     public GameObject[] roads = new GameObject[roadNum];
     public Transform startPos;
-
 
     private GameObject newstraightRoad;
     private Vector3 currentPos;
